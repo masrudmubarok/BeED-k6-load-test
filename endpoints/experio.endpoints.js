@@ -1,8 +1,3 @@
-// Declarative endpoint registry for Experio Builder (proxied via Gatekeeper).
-// Add / remove endpoints here only — no runner or scenario changes needed (OCP).
-//   name      : stable metric tag (per-endpoint aggregation)
-//   needs     : id keys that must exist in the data pool, else endpoint is skipped
-//   path(p,t) : builds the URL; p(key) picks a random id, t() a random search term
 /** @type {import('../lib/types.js').Endpoint[]} */
 export const experioEndpoints = [
   { name: 'exp:countries', path: () => '/experio-builder/countries' },

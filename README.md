@@ -64,38 +64,34 @@ Put valid ids from the target DB into the arrays. Start with a few — empty arr
 just skip the endpoints that need them.
 
 ## Run
+Put `BEED_SID` (+ any `VUS`/`DURATION`/`SERVICES`/`BASE_URL` overrides) in `.env`.
+The npm scripts load `.env` for you, so the everyday commands are just:
+
 ```bash
-# all services, default load (25 VUs/service, 1m hold)
-k6 run -e BEED_SID="<cookie value>" main.js
+npm run smoke   # 1 VU, 10s — validate cookie + endpoints first
+npm test        # full load using your .env values
+```
 
-# smoke (validate cookie + endpoints before real load)
-k6 run -e BEED_SID="<cookie value>" -e VUS=1 -e DURATION=10s main.js
+Both open the live built-in dashboard at **http://localhost:5665** while running —
+no Grafana/InfluxDB needed.
 
+### Ad-hoc runs (no .env)
+Call k6 directly and pass everything with `-e` (real shell env / `-e` wins over `.env`):
+
+```bash
 # subset + custom load
-k6 run -e BEED_SID="<cookie value>" -e SERVICES=library,hub -e VUS=50 -e DURATION=2m main.js
+k6 run -e BEED_SID="<cookie>" -e SERVICES=hub,library -e VUS=50 -e DURATION=2m main.js
 
-# target specific endpoints only (e.g. re-test the ones in OPTIMIZATION.md)
-k6 run -e BEED_SID="<cookie value>" -e ENDPOINTS=lib:search,lib:search.suggest main.js
+# only specific endpoints (e.g. re-test the ones in OPTIMIZATION.md)
+k6 run -e BEED_SID="<cookie>" -e ENDPOINTS=lib:search,lib:search.suggest main.js
 
-# machine-readable output
-k6 run -e BEED_SID="<cookie value>" --out json=result.json main.js
+# raw JSON output for your own tooling
+k6 run -e BEED_SID="<cookie>" --out json=result.json main.js
 ```
 
-(npm shortcuts exist in `package.json`, e.g. `npm run smoke` — still append `-e BEED_SID=...`.)
-
-## Dashboard / reporting
-No Grafana or InfluxDB required — k6 ships a built-in web dashboard.
-
-```bash
-# live dashboard at http://localhost:5665 while the test runs
-npm run dashboard            # or: node run.js run --dashboard main.js
-
-# self-contained HTML report written at the end (shareable, no server needed)
-npm run report:html          # or: node run.js run --report=html-report.html main.js
-
-# raw JSON time-series (feed your own tooling)
-npm run report               # -> result.json
-```
+### Reports
+- Live dashboard comes free with `npm test` / `npm run smoke` (`--dashboard`).
+- Static HTML report: `node run.js run --report=html-report.html main.js`.
 
 `--dashboard` / `--report[=file.html]` are launcher flags handled by `run.js`
 (they set `K6_WEB_DASHBOARD*` for you); everything else passes through to k6.

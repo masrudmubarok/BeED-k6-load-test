@@ -1,9 +1,4 @@
-// Composition root.
-// Wires config -> client -> data -> scenarios and exposes k6 entry points
-// (`options`, the per-service exec functions, and `setup`). No business logic
-// lives here; everything is delegated to focused modules.
 import { SharedArray } from 'k6/data';
-
 import { buildOptions, loadConfig } from './config/environment.js';
 import { makeTermPicker } from './lib/data.js';
 import { createClient } from './lib/http-client.js';

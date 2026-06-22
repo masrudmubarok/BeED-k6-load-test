@@ -1,20 +1,3 @@
-// Declarative endpoint registry for Hub API (proxied via Gatekeeper).
-//
-// Paths + query params mirror the real BeED UI → Gatekeeper → Hub-API contract:
-//   - Gatekeeper hub routes : Repo-0012-BeED-Gatekeeper/src/routes/hub.routes.ts
-//   - Hub-API handlers      : Repo-0014-Hub-API/src/controllers/**
-//   - UI call sites         : Repo-0011-BeED-UI/.../hub/services/hub.service.ts
-//
-// The Gatekeeper forwards `req.query` verbatim to Hub-API, so the params below
-// are exactly what the handlers read:
-//   hub lists      : ownerId (required), q, hubRelation (ALL|CREATED_BY_ME|SHARED_TEACHING),
-//                    status (all|active|scheduled|paused|ended), page, pageSize (<=100, default 20)
-//   hub detail     : admin/educator require ownerId; learner derives the user from the session
-//   search suggest : ownerId (required) + q (>= 2 chars, else Hub-API returns an empty list)
-//   room lists     : q, sort, order (asc|desc), page, pageSize
-//
-// NOTE: nested resources (hubId + roomId) pick ids independently; if your data
-// pools aren't naturally paired, prefer pre-paired ids in data/ids.json to avoid 404s.
 import { qs, randInt } from '../lib/data.js';
 
 const PAGE_SIZE = 20; // Hub-API default page size

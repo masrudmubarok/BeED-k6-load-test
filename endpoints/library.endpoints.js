@@ -1,4 +1,3 @@
-// Declarative endpoint registry for Unified Library API (proxied via Gatekeeper).
 import { qs } from '../lib/data.js';
 
 /** @type {import('../lib/types.js').Endpoint[]} */

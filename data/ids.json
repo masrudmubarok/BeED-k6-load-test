@@ -1,0 +1,31 @@
+{
+  "_comment": "Fill arrays with VALID ids from the target DB. Empty array => endpoints needing that id are skipped automatically. Add many ids for realism; one is picked at random per request.",
+
+  "searchTerms": ["math", "science", "history", "english"],
+
+  "experio": {
+    "leId": [],
+    "sitemapId": [],
+    "pointId": [],
+    "phaseId": [],
+    "stepId": [],
+    "lessonId": [],
+    "sessionId": []
+  },
+
+  "hub": {
+    "ownerId": [342],
+    "hubId": [],
+    "roomId": [],
+    "sessionUserId": [],
+    "attachmentId": [],
+    "leId": []
+  },
+
+  "library": {
+    "schoolId": [],
+    "accountItemId": [],
+    "folderId": [],
+    "lessonPlanId": []
+  }
+}

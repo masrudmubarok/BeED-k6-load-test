@@ -1,0 +1,12 @@
+{
+  "name": "beed-load-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "k6 performance/load tests for BeED APIs via the Gatekeeper (full-path).",
+  "scripts": {
+    "test": "node run.js run --dashboard main.js",
+    "smoke": "node run.js run -e VUS=1 -e DURATION=10s --dashboard main.js"
+  },
+  "keywords": ["k6", "load-test", "performance", "beed", "gatekeeper"],
+  "license": "UNLICENSED"
+}

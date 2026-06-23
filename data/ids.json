@@ -1,31 +1,31 @@
 {
   "_comment": "Fill arrays with VALID ids from the target DB. Empty array => endpoints needing that id are skipped automatically. Add many ids for realism; one is picked at random per request.",
 
-  "searchTerms": ["math", "science", "history", "english"],
+  "searchTerms": ["Mathematics", "Science", "Biology", "Physics", "Chemistry", "Geography", "History", "Economics", "Bahasa Melayu", "Humanities"],
 
   "experio": {
-    "leId": [],
-    "sitemapId": [],
-    "pointId": [],
-    "phaseId": [],
-    "stepId": [],
-    "lessonId": [],
-    "sessionId": []
+    "leId": [257482,257464,257476,257488,257489,257490,257491,257498,257502,257517,257522],
+    "sitemapId": [509711,509693,509705,509716,509717,509718,509719,509720,509727,509746,509751],
+    "pointId": [1252356,1252364,1252365,1252401,1252402,1252469,1252494,1252495,1252522,1252524,1252525],
+    "phaseId": [2571732,2571889,2571890,2571891,2571892,2571893,2571894,2571895,2571896,2571897,2571898],
+    "stepId": [4682849,4682951,4682952,4682953,4682954,4682955,4682956,4682957,4682958,4682959,4682960],
+    "lessonId": [257482,257464,257476,257488,257489,257490,257491,257498,257502,257517,257522],
+    "sessionId": [9811,9297,9304,9305]
   },
 
   "hub": {
     "ownerId": [342],
-    "hubId": [],
-    "roomId": [],
-    "sessionUserId": [],
-    "attachmentId": [],
-    "leId": []
+    "hubId": [305],
+    "roomId": [9297,9304,9305],
+    "sessionUserId": [69514,69516,69517,69525,69526,69675,69836,69837,69838,69839],
+    "attachmentId": [261699,261765,261771,261658,261675],
+    "leId": [257482]
   },
 
   "library": {
-    "schoolId": [],
-    "accountItemId": [],
-    "folderId": [],
-    "lessonPlanId": []
+    "schoolId": [1082],
+    "accountItemId": [6399067,6399035],
+    "folderId": [3,5,6,7,14,13,8,9,10,11,12],
+    "lessonPlanId": [6398936,6398914,6399056,6398679]
   }
 }
